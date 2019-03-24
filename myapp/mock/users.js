@@ -1,3 +1,3 @@
 export default {
-    '/api/users': ['a', 'b','c'],
+    '/api/users': ['a', 'b','c','d'],
   }
