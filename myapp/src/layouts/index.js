@@ -4,7 +4,7 @@ import router from 'umi/router';
 
 const { Header, Content, Footer } = Layout;
 const TabPane = Tabs.TabPane;
-let some='';
+
 export default class Layouts extends React.Component {
   
   callback=(key)=>{
