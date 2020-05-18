@@ -12,16 +12,16 @@ export default {
         dll: false,
       }],
     ],
-    routes: [
-        { path: '/', component: '../layouts/index',
-            routes:[
-              { path: '/contractSigning', component: './contractSigning/contractSigning'},
-              { path: '/', component: './relationship/relationship'},
-              { path: '/suspiciousEvents', component: './suspiciousEvents/suspiciousEvents'},
-              { path: '/404', component: './404'},
-            ]
-        },
-      ],
+    // routes: [
+    //     { path: '/', component: '../layouts/index',
+    //         routes:[
+    //           { path: '/contractSigning', component: './contractSigning/contractSigning'},
+    //           { path: '/', component: './relationship/relationship'},
+    //           { path: '/suspiciousEvents', component: './suspiciousEvents/suspiciousEvents'},
+    //           { path: '/404', component: './404'},
+    //         ]
+    //     },
+    //   ],
       
   }
   
