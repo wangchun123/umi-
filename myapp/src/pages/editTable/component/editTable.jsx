@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Input, Select, InputNumber } from 'antd';
 import { cloneDeep } from 'lodash';
-
+import styles from './index.less';
 const { Option } = Select;
 
 const Eum = [
@@ -16,9 +16,33 @@ export default ({ Empty, data, loading, saveData }) => {
     const newData = cloneDeep(dataSource);
     newData[index][dataIndex] = value;
     newData[index][`${dataIndex}Error`] = false;
-    setDataSource(newData);
+   
+    checkError(newData)
+    
     saveData && saveData(newData);
   };
+
+  const checkError = newData => {
+    let falg = false;
+
+    const check = (mode, item) => {
+      item[mode] = true;
+      falg = true;
+    };
+
+    newData.length > 0 &&
+      newData.forEach(item => {
+        const { name, age, tags } = item;
+        if (!name) check('nameError', item);
+        if (!age) check('ageError', item);
+        if (!tags) check('tagsError', item);
+      });
+
+    if (falg) setDataSource(newData); //有错误，回填数据显示错误
+
+    return falg;
+  };
+
 
   const dealDelete = index => {
     const newData = cloneDeep(dataSource);
@@ -63,9 +87,11 @@ export default ({ Empty, data, loading, saveData }) => {
         return (
           <>
             <Select
-              style={{ width: '100%' }}
+              style={{ width: '100%'}}
               value={text}
               onChange={value => dealWithOnchanges(value, 'age', index)}
+              allowClear
+             
             >
               {Eum.map(item => {
                 return (
